@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "4d7svH6zMCo=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Игорь\\RiderProjects\\SpaceWar\\SpaceApplication\\SpaceApplication.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Игорь\\.nuget\\packages\\raylib-cs\\7.0.2\\raylib-cs.7.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
