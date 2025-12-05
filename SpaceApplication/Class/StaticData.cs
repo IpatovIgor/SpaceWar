@@ -1,4 +1,4 @@
-using System.CodeDom.Compiler;
+/*using System.CodeDom.Compiler;
 
 namespace SpaceApplication;
 
@@ -27,4 +27,4 @@ public static class StaticData
     {
         return new DataForObjects(x, y, 20, 85, 85, "asteroid.png", 7);
     }
-}
+}*/

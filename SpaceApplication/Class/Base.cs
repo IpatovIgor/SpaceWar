@@ -1,9 +1,26 @@
-namespace SpaceApplication;
+using Raylib_cs;
+using SpaceApplication;
 
-public class Base: Ship
+namespace Domain;
+
+public class BaseView: IGameObjectView
 {
-    public Base(IGameInput input, DataForObjects data, List<GameObject> list, GameEvents dir) :
-        base(input, data, list, dir)
+    public BaseView(Base myBase, string texturePath)
     {
+        texture = Raylib.LoadTexture(texturePath);
+        this.myBase = myBase;
+    }
+
+    private Texture2D texture;
+    private Base myBase;
+
+    public void Print()
+    {
+        Raylib.DrawTexture(texture, myBase.RectPosition.X, myBase.RectPosition.Y, Color.White);
+    }
+
+    public void UnloadTexture()
+    {
+        Raylib.UnloadTexture(texture);
     }
 }

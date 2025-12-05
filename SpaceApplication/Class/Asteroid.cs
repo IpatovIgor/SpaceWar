@@ -2,45 +2,24 @@ using Domain;
 using Raylib_cs;
 namespace SpaceApplication;
 
-public class Asteroid: GameObject, IGiveScore
+public class AsteroidView: IGameObjectView
 {
-    public Asteroid(IGameInput input, DataForObjects data, List<GameObject> list) 
-        : base(input, data, list)
+    public AsteroidView(Asteroid asteroid, string texturePath)
     {
-        Score = 5;
-    }
-    
-    public void HitShips()
-    {
-        for (var i = 0; i < objList.Count; i++)
-        {
-            if (objList[i].Equals(this))
-                continue;
-            
-            if (Collisions.TwoRectHaveCollisions(this, objList[i]))
-            {
-                objList[i].GetDamage(10);    
-                GetDamage(20);
-            }
-        }
+        texture = Raylib.LoadTexture(texturePath);
+        this.asteroid = asteroid;
     }
 
-    public override bool Update()
+    private Texture2D texture;
+    private Asteroid asteroid;
+
+    public void Print()
     {
-        foreach (var gameEvent in input.GetEvents())
-        {
-            if (gameEvent == GameEvents.MoveDown)
-                MoveDown();
-        }
-        
-        HitShips();
-        bool wasDie = HP <= 0;
-        if (Y > 900 || HP <= 0)
-            Die();
-        
-        Print();
-        return wasDie;
+        Raylib.DrawTexture(texture, asteroid.RectPosition.X, asteroid.RectPosition.Y, Color.White);
     }
 
-    public int Score { get; }
+    public void UnloadTexture()
+    {
+        Raylib.UnloadTexture(texture);
+    }
 }

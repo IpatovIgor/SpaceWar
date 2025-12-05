@@ -1,4 +1,4 @@
-namespace SpaceApplication;
+namespace Domain;
 
 public enum GameEvents
 {

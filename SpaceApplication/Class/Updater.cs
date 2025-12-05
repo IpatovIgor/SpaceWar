@@ -1,4 +1,4 @@
-namespace SpaceApplication;
+/*namespace SpaceApplication;
 
 public class Updater(List<GameObject> list, IStatController stat) : IUpdater
 {
@@ -35,4 +35,4 @@ public class Updater(List<GameObject> list, IStatController stat) : IUpdater
                 TryGiveScore(obj);
         }
     }
-}
+}*/

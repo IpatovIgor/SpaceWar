@@ -4,44 +4,24 @@ using Raylib_cs;
 
 namespace SpaceApplication;
 
-public class Bullet: GameObject
+public class BulletView:IGameObjectView
 {
-    public Bullet(IGameInput input, DataForObjects data, List<GameObject> list) :
-        base(input, data, list)
+    public BulletView(Bullet bullet, string texturePath)
     {
-        texture = Raylib.LoadTexture("bullet.png");
+        texture = Raylib.LoadTexture(texturePath);
+        this.bullet = bullet;
     }
 
-    private void HitShips()
+    private Texture2D texture;
+    private Bullet bullet;
+
+    public void Print()
     {
-        for (var i = 0; i < objList.Count; i++)
-        {
-            if (objList[i].Equals(this))
-                continue;
-            
-            if (Collisions.TwoRectHaveCollisions(this, objList[i]))
-            {
-                objList[i].GetDamage(10);    
-                GetDamage(10);
-            }
-            
-        }
+        Raylib.DrawTexture(texture, bullet.RectPosition.X, bullet.RectPosition.Y, Color.White);
     }
 
-    public override bool Update()
+    public void UnloadTexture()
     {
-        foreach (var gameEvent in input.GetEvents())
-        {
-            if (gameEvent == GameEvents.MoveUp)
-                MoveUp();
-            if (gameEvent == GameEvents.MoveDown)
-                MoveDown();
-        }
-        
-        if (Y < 20 || HP <= 0 || Y > 900)
-            Die();
-        HitShips();
-        Print();
-        return false;
+        Raylib.UnloadTexture(texture);
     }
 }
