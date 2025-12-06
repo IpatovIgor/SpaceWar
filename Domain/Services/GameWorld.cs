@@ -17,7 +17,7 @@ public class GameWorld
         gameObjects.Remove(obj);
     }
 
-    public bool CheckCollisionWhithObject(GameObject newObj)
+    public bool CheckCollisionWithObject(GameObject newObj)
     {
         var flag = false;
         

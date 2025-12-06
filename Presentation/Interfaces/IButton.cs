@@ -1,6 +1,6 @@
 using Domain;
 
-namespace SpaceApplication;
+namespace Presentation;
 
 public interface IButton: IRectangle
 {

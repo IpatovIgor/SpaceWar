@@ -1,5 +1,6 @@
 using Domain;
-namespace SpaceApplication.Class;
+using Presentation;
+namespace SpaceApplication;
 
 public class ViewManager(GameWorld world)
 {
@@ -8,21 +9,21 @@ public class ViewManager(GameWorld world)
     private Dictionary<GameObject ,IGameObjectView> connectionDict = new Dictionary<GameObject, IGameObjectView>();
     public List<IGameObjectView> ViewsObjects { get; private set; } = new List<IGameObjectView>();
 
-    private void DelateDeadView()
+    private void DeleteDeadView()
     {
-        var viewersForDelate = new List<IGameObjectView>();
+        var viewersForDelete = new List<IGameObjectView>();
         
         foreach (var view in ViewsObjects)
         {
             var obj = connectionDict.FirstOrDefault(x => x.Value == view).Key;
             if (obj.IsDead)
             {
-                viewersForDelate.Add(view);
+                viewersForDelete.Add(view);
                 connectionDict.Remove(obj);
             }
         }
 
-        foreach (var obj in viewersForDelate)
+        foreach (var obj in viewersForDelete)
         {
             obj.UnloadTexture();
             ViewsObjects.Remove(obj);
@@ -31,26 +32,19 @@ public class ViewManager(GameWorld world)
     
     public void UpdateViewers()
     {
-        DelateDeadView();
+        DeleteDeadView();
         
         foreach (var obj in gameWorld.gameObjects)
         {
             if (connectionDict.ContainsKey(obj))
+            {
+                connectionDict[obj].UpdatePosition(new Point(obj.RectPosition.X, obj.RectPosition.Y));
                 continue;
-            
+            }
+
             var viewObj = factory.CreateView(obj);
             ViewsObjects.Add(viewObj);
             connectionDict[obj] = viewObj;
-        }
-        
-        PrintAll();
-    }
-
-    private void PrintAll()
-    {
-        foreach (var viewer in ViewsObjects)
-        {
-            viewer.Print();
         }
     }
 }

@@ -1,5 +1,6 @@
+using Presentation;
 using Domain;
-namespace SpaceApplication.Class;
+namespace SpaceApplication;
 
 public class ViewFactory
 {
@@ -7,11 +8,11 @@ public class ViewFactory
     
     public ViewFactory()
     {
-        Register<Ship>(obj => new ShipView((Ship)obj, "ship.png"));
-        Register<PlayerShip>(obj => new PlayerShipView((Ship)obj, "ship.png"));
-        Register<Base>(obj => new BaseView((Base)obj, "spaceBase.png"));
-        Register<Bullet>(obj => new BulletView((Bullet)obj, "bullet.png"));
-        Register<Asteroid>(obj => new AsteroidView((Asteroid)obj, "asteroid.png"));
+        Register<Ship>(obj => new SpriteView(new Point(obj.RectPosition.X, obj.RectPosition.Y), "ship.png"));
+        Register<PlayerShip>(obj => new SpriteView(new Point(obj.RectPosition.X, obj.RectPosition.Y), "ship.png"));
+        Register<Base>(obj => new SpriteView(new Point(obj.RectPosition.X, obj.RectPosition.Y), "spaceBase.png"));
+        Register<Bullet>(obj => new SpriteView(new Point(obj.RectPosition.X, obj.RectPosition.Y), "bullet.png"));
+        Register<Asteroid>(obj => new SpriteView(new Point(obj.RectPosition.X, obj.RectPosition.Y), "asteroid.png"));
     }
     
     private void Register<T>(Func<GameObject, IGameObjectView> creator) where T : GameObject
@@ -35,6 +36,7 @@ public class ViewFactory
             {
                 return baseCreator(gameObject);
             }
+            
             baseType = baseType.BaseType;
         }
     

@@ -23,3 +23,5 @@ C:\Users\Игорь\RiderProjects\SpaceWar\SpaceApplication\obj\Debug\net9.0\Spa
 C:\Users\Игорь\RiderProjects\SpaceWar\SpaceApplication\obj\Debug\net9.0\SpaceApplication.genruntimeconfig.cache
 C:\Users\Игорь\RiderProjects\SpaceWar\SpaceApplication\obj\Debug\net9.0\ref\SpaceApplication.dll
 C:\Users\Игорь\RiderProjects\SpaceWar\SpaceApplication\obj\Debug\net9.0\SpaceApplication.sourcelink.json
+C:\Users\Игорь\RiderProjects\SpaceWar\SpaceApplication\bin\Debug\net9.0\Presentation.dll
+C:\Users\Игорь\RiderProjects\SpaceWar\SpaceApplication\bin\Debug\net9.0\Presentation.pdb

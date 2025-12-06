@@ -3,7 +3,7 @@ using Raylib_cs;
 
 namespace SpaceApplication;
 
-public class KeyBoardInput:IGameInput
+public class KeyBoardInput: IGameInput
 {
     private bool pressFlag = true;
     

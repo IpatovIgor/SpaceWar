@@ -46,6 +46,20 @@
         "runtime": {
           "bin/placeholder/Domain.dll": {}
         }
+      },
+      "Presentation/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Raylib-cs": "7.0.2"
+        },
+        "compile": {
+          "bin/placeholder/Presentation.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Presentation.dll": {}
+        }
       }
     }
   },
@@ -76,11 +90,17 @@
       "type": "project",
       "path": "../Domain/Domain.csproj",
       "msbuildProject": "../Domain/Domain.csproj"
+    },
+    "Presentation/1.0.0": {
+      "type": "project",
+      "path": "../Presentation/Presentation.csproj",
+      "msbuildProject": "../Presentation/Presentation.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
       "Domain >= 1.0.0",
+      "Presentation >= 1.0.0",
       "Raylib-cs >= 7.0.2"
     ]
   },
@@ -113,6 +133,9 @@
           "projectReferences": {
             "C:\\Users\\Игорь\\RiderProjects\\SpaceWar\\Domain\\Domain.csproj": {
               "projectPath": "C:\\Users\\Игорь\\RiderProjects\\SpaceWar\\Domain\\Domain.csproj"
+            },
+            "C:\\Users\\Игорь\\RiderProjects\\SpaceWar\\Presentation\\Presentation.csproj": {
+              "projectPath": "C:\\Users\\Игорь\\RiderProjects\\SpaceWar\\Presentation\\Presentation.csproj"
             }
           }
         }

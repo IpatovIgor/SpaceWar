@@ -12,12 +12,12 @@ public class Spawner
             
             if (nextObjInd == TypeOfObjects.Asteroid)
                 newObj = new Asteroid(new EnemyObjectInput(), new Position(x, 70),
-                    new Size(85, 85), new Health(20), new Speed(7), repository);
+                    new Size(85, 85), new Health(20), new Speed(3), repository);
             if (nextObjInd == TypeOfObjects.Ship)
                 newObj = new Ship(new EnemyShipInput(), new Position(x, 70),
-                    new Size(85, 80), new Health(20), new Speed(6), repository, Direction.Down);
+                    new Size(85, 80), new Health(20), new Speed(3), repository, Direction.Down);
 
-            var flag = gameWorld.CheckCollisionWhithObject(newObj);
+            var flag = gameWorld.CheckCollisionWithObject(newObj);
             
             if (!flag)
                 repository.Add(newObj);
@@ -38,9 +38,8 @@ public class Spawner
     private GameWorld gameWorld;
     private Random random;
     
-    public void TrySpawn()
+    public void TrySpawn(float deltaTime)
     {
-        var deltaTime = 0.01f;
         if (timer.Update(deltaTime))
         {
             Spawn();

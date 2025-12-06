@@ -7,7 +7,7 @@ public class EnemyShipInput: IGameInput
     public List<GameEvents> GetEvents()
     {
         var random = new Random();
-        var deltaTime = 0.001f;
+        var deltaTime = 0.01f;
         if (timer.Update(deltaTime))
         {
              lastEvent = (GameEvents)random.Next(0, 3);

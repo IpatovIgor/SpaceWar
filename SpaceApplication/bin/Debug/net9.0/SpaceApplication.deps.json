@@ -9,6 +9,7 @@
       "SpaceApplication/1.0.0": {
         "dependencies": {
           "Domain": "1.0.0",
+          "Presentation": "1.0.0",
           "Raylib-cs": "7.0.2"
         },
         "runtime": {
@@ -57,6 +58,18 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "Presentation/1.0.0": {
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Raylib-cs": "7.0.2"
+        },
+        "runtime": {
+          "Presentation.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -74,6 +87,11 @@
       "hashPath": "raylib-cs.7.0.2.nupkg.sha512"
     },
     "Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Presentation/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
