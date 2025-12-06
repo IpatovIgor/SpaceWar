@@ -1,5 +1,4 @@
-namespace SpaceApplication;
-using Domain;
+namespace Domain;
 
 public class Spawner
 {
@@ -9,34 +8,27 @@ public class Spawner
         {
             var x = random.Next(0, 1120);
             GameObject newObj = null;
-            var flag = true;
             var nextObjInd = (TypeOfObjects) random.Next(0, 2);
             
             if (nextObjInd == TypeOfObjects.Asteroid)
                 newObj = new Asteroid(new EnemyObjectInput(), new Position(x, 70),
-                    new Size(85, 85), new Health(20), new Speed(9), gameWorld);
+                    new Size(85, 85), new Health(20), new Speed(7), repository);
             if (nextObjInd == TypeOfObjects.Ship)
                 newObj = new Ship(new EnemyShipInput(), new Position(x, 70),
-                    new Size(85, 80), new Health(20), new Speed(9), gameWorld, Direction.Down);
-            foreach (var obj in gameWorld.gameObjects)
-            {
-                if (obj.Equals(newObj))
-                    continue;
+                    new Size(85, 80), new Health(20), new Speed(6), repository, Direction.Down);
 
-                if (Collisions.TwoRectHaveCollisions(obj, newObj))
-                {
-                    flag = false;
-                    break;
-                }
-            }
+            var flag = gameWorld.CheckCollisionWhithObject(newObj);
             
             if (!flag)
-                newObj.Die();
+                repository.Add(newObj);
         }
     }
+
+    private IGameObjectRepository repository;
     
-    public Spawner(GameWorld world)
+    public Spawner(GameWorld world, IGameObjectRepository repository)
     {
+        this.repository = repository;
         timer = new Timer(2);
         random = new Random();
         gameWorld = world;

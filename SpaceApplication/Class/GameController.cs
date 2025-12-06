@@ -21,13 +21,14 @@ public class GameController: IGameController
         Raylib.InitWindow(1200, 900, "Space War");
         
         var gameWorld = new GameWorld();
+        var repository = new GameObjectRepository(gameWorld);
         new PlayerShip(gameInput, new Position(0, 650),
-            new Size(85, 80), new Health(1000), new Speed(7), gameWorld, Direction.Up);
-        var spawner = new Spawner(gameWorld);
+            new Size(85, 80), new Health(1000), new Speed(7), repository, Direction.Up);
+        var spawner = new Spawner(gameWorld, repository);
         var backTexture = Raylib.LoadTexture("space.png");
         var viewMeneger = new ViewManager(gameWorld);
         new Base(new StopInput(), new Position(150, 700),
-            new Size(841, 500), new Health(1000), new Speed(7), gameWorld, Direction.Up);
+            new Size(841, 500), new Health(1000), new Speed(7), repository, Direction.Up);
         
         while (!Raylib.WindowShouldClose())
         {
@@ -38,7 +39,6 @@ public class GameController: IGameController
             spawner.TrySpawn();
             gameWorld.UpdateAllObjects();
             viewMeneger.UpdateViewers();
-            viewMeneger.PrintAll();
             Raylib.EndDrawing();
         }
         
