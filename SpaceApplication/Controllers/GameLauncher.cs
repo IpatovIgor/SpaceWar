@@ -6,9 +6,11 @@ public class GameLauncher
     public void LaunchGame()
     {
         var game = CreateGame();
-        game.StartGame();
+        AllScore = game.StartGame();
     }
-    
+
+    public int AllScore { get; private set; }
+
     private GameController CreateGame()
     {
         var world = new GameWorld();

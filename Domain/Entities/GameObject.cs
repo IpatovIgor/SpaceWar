@@ -68,7 +68,7 @@ public abstract class GameObject: IRectangle
 
     public Health HP { get; protected set; }
     
-    public abstract bool Update();
+    public abstract void Update();
     
     public Position RectPosition { get; private set; }
     

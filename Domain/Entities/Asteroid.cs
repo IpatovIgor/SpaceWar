@@ -10,7 +10,7 @@ public class Asteroid: GameObject, IGiveScore, IDamageable
         Damage = 10;
     }
     
-    public override bool Update()
+    public override void Update()
     {
         foreach (var gameEvent in input.GetEvents())
         {
@@ -21,8 +21,6 @@ public class Asteroid: GameObject, IGiveScore, IDamageable
         bool wasDie = HP.Value <= 0;
         if (RectPosition.Y > 900 || HP.Value <= 0)
             Die();
-        
-        return wasDie;
     }
 
     public int Score { get; }

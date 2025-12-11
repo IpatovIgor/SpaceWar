@@ -9,7 +9,7 @@ public class Bullet: GameObject, IDamageable
         Damage = 10;
     }
     
-    public override bool Update()
+    public override void Update()
     {
         foreach (var gameEvent in input.GetEvents())
         {
@@ -21,7 +21,6 @@ public class Bullet: GameObject, IDamageable
         
         if (RectPosition.Y < 20 || HP.Value <= 0 || RectPosition.Y > 900)
             Die();
-        return false;
     }
 
     public int Damage { get; }

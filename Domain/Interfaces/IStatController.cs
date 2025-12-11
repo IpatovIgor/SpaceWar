@@ -6,7 +6,15 @@ public interface IStatController
 {
     public void AddScore(int score);
     
-    public int Score { get; }
-    
-    public bool GameIsOver { get; set; }
+    public Score AllScore { get; }
+    public Health PlayerHP { get; }
+    public Health BaseHP { get; }
+    public bool GameIsOver { get; }
+
+    public void UpdatePlayerHP(int hp);
+
+    public void UpdateBaseHP(int hp);
+
+    public void Reset();
+
 }

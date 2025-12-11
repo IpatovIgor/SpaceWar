@@ -24,7 +24,7 @@ public class Ship : GameObject, IGiveScore
         repository.Add(obj);
     }
     
-    public override bool Update()
+    public override void Update()
     {
         var eventsList = input.GetEvents();
         foreach (var gameEvent in eventsList)
@@ -49,15 +49,8 @@ public class Ship : GameObject, IGiveScore
             }
         }
 
-        var wasDie = false;
-
         if (HP.Value <= 0 || RectPosition.Y > 800)
-        {
             Die();
-            wasDie = true;
-        }
-        
-        return wasDie;
     }
     
     public int Score { get; }

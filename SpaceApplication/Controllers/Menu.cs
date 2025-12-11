@@ -6,16 +6,16 @@ namespace SpaceApplication;
 
 public class MenuController
 {
-    private readonly GameLauncher _gameLauncher;
-    private readonly ButtonController _buttonController;
-    private readonly Background _background;
-    private bool _shouldStartGame = false;
+    private readonly GameLauncher gameLauncher;
+    private readonly ButtonController buttonController;
+    private readonly Background background;
+    private bool shouldStartGame = false;
     
     public MenuController(GameLauncher gameLauncher)
     {
-        _gameLauncher = gameLauncher;
-        _buttonController = new ButtonController();
-        _background = new Background("menu.png");
+        this.gameLauncher = gameLauncher;
+        buttonController = new ButtonController();
+        background = new Background("menu.png");
         
         InitializeButtons();
     }
@@ -23,41 +23,47 @@ public class MenuController
     private void InitializeButtons()
     {
         var startButton = new Button("start.png", 410, 250, 407, 162);
-        startButton.OnClick = () => _shouldStartGame = true;
+        startButton.OnClick = () => shouldStartGame = true;
         
         var exitButton = new Button("exit.png", 420, 520, 372, 130);
-        exitButton.OnClick = () => Raylib.CloseWindow();
+        exitButton.OnClick = () => gameShouldStop = true;
         
-        _buttonController.AddButton(startButton);
-        _buttonController.AddButton(exitButton);
+        buttonController.AddButton(startButton);
+        buttonController.AddButton(exitButton);
     }
+    
+    private bool gameShouldStop;
     
     public void Run()
     {
-        while (!Raylib.WindowShouldClose() && !_shouldStartGame)
+        while (!gameShouldStop)
         {
+            if (Raylib.WindowShouldClose())
+                gameShouldStop = true;
             Update();
             Draw();
-        }
-        
-        if (_shouldStartGame)
-        {
-            _gameLauncher.LaunchGame();
+            if (!shouldStartGame) continue;
+            gameLauncher.LaunchGame();
+            shouldStartGame = false;
+            score = gameLauncher.AllScore;
         }
     }
     
     private void Update()
     {
-        _buttonController.Update();
+        buttonController.Update();
     }
+
+    private int score;
     
     private void Draw()
     {
         Raylib.BeginDrawing();
         Raylib.ClearBackground(Color.White);
         
-        _background.Draw();
-        _buttonController.Draw();
+        background.Draw();
+        buttonController.Draw();
+        Raylib.DrawText($"The Best Score: {score}", 330, 150, 60, Color.Gold);
         
         Raylib.EndDrawing();
     }

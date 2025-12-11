@@ -3,9 +3,9 @@ namespace Domain;
 public class GameWorld
 {
     
-    private IStatController statController = new StatController();
+    public IStatController statController {get; set;} = new StatController();
     
-    public List<GameObject> gameObjects = new List<GameObject>();
+    public List<GameObject> gameObjects {get; set;} = new List<GameObject>();
 
     public void Add(GameObject obj)
     {
@@ -26,11 +26,9 @@ public class GameWorld
             if (obj.Equals(newObj))
                 continue;
 
-            if (Collisions.TwoRectHaveCollisions(obj, newObj))
-            {
-                flag = true;
-                break;
-            }
+            if (!Collisions.TwoRectHaveCollisions(obj, newObj)) continue;
+            flag = true;
+            break;
         }
 
         return flag;
@@ -41,7 +39,7 @@ public class GameWorld
         return gameObjects.OfType<T>().ToList();
     }
 
-    public void CheckCollisions()
+    private void CheckCollisions()
     {
         foreach (var firstObj in gameObjects)
         {
@@ -64,9 +62,21 @@ public class GameWorld
         
         for (var i = gameObjects.Count - 1; i >= 0; i--)
         {
-            var die = gameObjects[i].Update();
-            if (die)
-                statController.AddScore(10);
+            var obj = gameObjects[i];
+            obj.Update();
+            UpdateStatForObj(obj);
         }
+    }
+
+    public void UpdateStatForObj(GameObject gameObject)
+    {
+        if (gameObject.IsDead && gameObject is IGiveScore score)
+            statController.AddScore(score.Score);
+
+        if (gameObject is PlayerShip playerShip)
+            statController.UpdatePlayerHP(playerShip.HP.Value);
+        
+        if (gameObject is Base @base)
+            statController.UpdateBaseHP(@base.HP.Value);
     }
 }

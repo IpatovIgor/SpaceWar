@@ -1,10 +1,20 @@
 namespace Domain;
 
-public class Spawner
+public class Spawner: ISpawner
 {
+    private int range = 1;
+    private int piggyBankForSpawn = 0;
+
+    private void UpSpeedOfSpawn()
+    {
+        piggyBankForSpawn += 1;
+        piggyBankForSpawn %= 5;
+        range += piggyBankForSpawn / 4;
+    }
+    
     private void Spawn()
     {
-        for (var i = 0; i < 2; i++)
+        for (var i = 0; i < range; i++)
         {
             var x = random.Next(0, 1120);
             GameObject newObj = null;
@@ -22,6 +32,8 @@ public class Spawner
             if (!flag)
                 repository.Add(newObj);
         }
+
+        UpSpeedOfSpawn();
     }
 
     private IGameObjectRepository repository;
