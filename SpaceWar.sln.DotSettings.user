@@ -1,0 +1,11 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5b272366_002De627_002D4ba0_002Da020_002D4775e8856ebf/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GameObjectTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::A3434DA6-2C99-4D53-92D3-A56AED67B1CC::net9.0::Domain.Tests.GameObjectTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::A3434DA6-2C99-4D53-92D3-A56AED67B1CC::net9.0::ShipTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::A3434DA6-2C99-4D53-92D3-A56AED67B1CC::net9.0::BulletTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::A3434DA6-2C99-4D53-92D3-A56AED67B1CC::net9.0::GameWorldTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::A3434DA6-2C99-4D53-92D3-A56AED67B1CC::net9.0::StatControllerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::A3434DA6-2C99-4D53-92D3-A56AED67B1CC::net9.0::SpawnerTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

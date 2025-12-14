@@ -1,0 +1,12 @@
+C:\Users\Игорь\RiderProjects\SpaceWar\Geometry\bin\Debug\net9.0\Geometry.deps.json
+C:\Users\Игорь\RiderProjects\SpaceWar\Geometry\bin\Debug\net9.0\Geometry.dll
+C:\Users\Игорь\RiderProjects\SpaceWar\Geometry\bin\Debug\net9.0\Geometry.pdb
+C:\Users\Игорь\RiderProjects\SpaceWar\Geometry\obj\Debug\net9.0\Geometry.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Игорь\RiderProjects\SpaceWar\Geometry\obj\Debug\net9.0\Geometry.AssemblyInfoInputs.cache
+C:\Users\Игорь\RiderProjects\SpaceWar\Geometry\obj\Debug\net9.0\Geometry.AssemblyInfo.cs
+C:\Users\Игорь\RiderProjects\SpaceWar\Geometry\obj\Debug\net9.0\Geometry.csproj.CoreCompileInputs.cache
+C:\Users\Игорь\RiderProjects\SpaceWar\Geometry\obj\Debug\net9.0\Geometry.sourcelink.json
+C:\Users\Игорь\RiderProjects\SpaceWar\Geometry\obj\Debug\net9.0\Geometry.dll
+C:\Users\Игорь\RiderProjects\SpaceWar\Geometry\obj\Debug\net9.0\refint\Geometry.dll
+C:\Users\Игорь\RiderProjects\SpaceWar\Geometry\obj\Debug\net9.0\Geometry.pdb
+C:\Users\Игорь\RiderProjects\SpaceWar\Geometry\obj\Debug\net9.0\ref\Geometry.dll

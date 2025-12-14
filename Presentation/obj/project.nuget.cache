@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Aaxdvr5V/9U=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Игорь\\RiderProjects\\SpaceWar\\Presentation\\Presentation.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Игорь\\.nuget\\packages\\raylib-cs\\7.0.2\\raylib-cs.7.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
