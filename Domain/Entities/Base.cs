@@ -1,4 +1,5 @@
 namespace Domain;
+using Geometry;
 
 public class Base: Ship
 {

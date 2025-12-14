@@ -1,5 +1,6 @@
 using Domain;
 using Presentation;
+using Geometry;
 
 namespace SpaceApplication;
 using Raylib_cs;
@@ -35,12 +36,30 @@ public class GameController: IGameController
     
     public int StartGame()
     {
-        var playerShip = new PlayerShip(inputForPlayerShip, new Position(0, 650),
-            new Size(85, 80), new Health(1000), new Speed(7), repository, Direction.Up);
+        var playerShip = new PlayerShip(
+            inputForPlayerShip, 
+            new Position(0, 650),
+            GameConfig.Player.Size,
+            new Health(GameConfig.Player.Health),
+            new Speed(GameConfig.Player.Speed), 
+            repository, 
+            Direction.Up);
+
         var backTexture = Raylib.LoadTexture("space.png");
-        var @base = new Base(new StopInput(), new Position(150, 700),
-            new Size(841, 500), new Health(1000), new Speed(7), repository, Direction.Up);
+
+        var @base = new Base(
+            new StopInput(), 
+            new Position(150, 700),
+            GameConfig.Base.Size,
+            new Health(GameConfig.Base.Health),
+            new Speed(GameConfig.Player.Speed),
+            repository, 
+            Direction.Up);
+
         var statView = new StatView();
+        
+        playerShip.RegisterInRepository();
+        @base.RegisterInRepository();
 
         while (!Raylib.WindowShouldClose())
         {

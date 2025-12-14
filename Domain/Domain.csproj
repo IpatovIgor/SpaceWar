@@ -7,4 +7,8 @@
         <RootNamespace>ClassLibrary1</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Geometry\Geometry.csproj" />
+    </ItemGroup>
+
 </Project>

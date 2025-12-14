@@ -1,5 +1,6 @@
 using Presentation;
 using Domain;
+using Geometry;
 namespace SpaceApplication;
 
 public class ViewFactory
@@ -8,7 +9,7 @@ public class ViewFactory
     
     public ViewFactory()
     {
-        Register<Ship>(obj => new SpriteView(new Point(obj.RectPosition.X, obj.RectPosition.Y), "ship.png"));
+        Register<Ship>(obj => new SpriteView(new Point(obj.RectPosition.X, obj.RectPosition.Y), "enemyShip.png"));
         Register<PlayerShip>(obj => new SpriteView(new Point(obj.RectPosition.X, obj.RectPosition.Y), "ship.png"));
         Register<Base>(obj => new SpriteView(new Point(obj.RectPosition.X, obj.RectPosition.Y), "spaceBase.png"));
         Register<Bullet>(obj => new SpriteView(new Point(obj.RectPosition.X, obj.RectPosition.Y), "bullet.png"));

@@ -1,10 +1,11 @@
 namespace Domain;
+using Geometry;
 
 public abstract class GameObject: IRectangle
 {
     public void GetDamage(int damage)
     {
-        HP = HP.GetDamage(damage);
+        HP = new Health(HP.Value - damage);
     }
     
     protected void MoveLeft()
@@ -13,45 +14,48 @@ public abstract class GameObject: IRectangle
             return;
         RectPosition = RectPosition.Move(-speed.Value, 0);
     }
-    
+
     protected void MoveRight()
     {
-        if (RectPosition.X + speed.Value > 1150)
+        if (RectPosition.X + speed.Value + RectSize.Width > GameConfig.ScreenWidth)
             return;
         RectPosition = RectPosition.Move(speed.Value, 0);
     }
-    
+
     protected void MoveUp()
     {
         if (RectPosition.Y - speed.Value < 0)
             return;
         RectPosition = RectPosition.Move(0, -speed.Value);
     }
-    
+
     protected void MoveDown()
     {
-        if (RectPosition.Y + speed.Value > 900)
+        if (RectPosition.Y + speed.Value + RectSize.Height > GameConfig.ScreenHeight)
             return;
         RectPosition = RectPosition.Move(0, speed.Value);
     }
-
+    
     private Speed speed;
     
     protected GameObject(IGameInput input, Position position, Size size, Health health,
         Speed speed, IGameObjectRepository repository)
     {
-        this.repository = repository;
         this.speed = speed;
         this.input = input;
         RectPosition = position;
         HP = health;
         RectSize = size;
-        
-        this.repository.Add(this);
+        this.repository = repository;
     }
 
-    protected IGameObjectRepository repository;
+    private IGameObjectRepository repository;
 
+    public void RegisterInRepository()
+    {
+        repository.Add(this);
+    }
+    
     public bool IsDead { get; private set; } = false;
 
     public void Die()

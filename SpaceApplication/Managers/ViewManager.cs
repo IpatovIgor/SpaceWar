@@ -1,5 +1,6 @@
 using Domain;
 using Presentation;
+using Geometry;
 namespace SpaceApplication;
 
 public class ViewManager(GameWorld world)

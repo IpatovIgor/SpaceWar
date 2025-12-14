@@ -1,5 +1,4 @@
-using System.Drawing;
-using Point = Domain.Point;
+using Point = Geometry.Point;
 
 namespace Presentation;
 

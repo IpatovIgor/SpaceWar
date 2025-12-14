@@ -1,4 +1,4 @@
-﻿namespace Domain;
+﻿namespace Geometry;
 
 public static class Collisions
 {

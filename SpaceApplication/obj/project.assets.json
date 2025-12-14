@@ -40,11 +40,24 @@
       "Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Geometry": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Domain.dll": {}
         },
         "runtime": {
           "bin/placeholder/Domain.dll": {}
+        }
+      },
+      "Geometry/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/Geometry.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Geometry.dll": {}
         }
       },
       "Presentation/1.0.0": {
@@ -90,6 +103,11 @@
       "type": "project",
       "path": "../Domain/Domain.csproj",
       "msbuildProject": "../Domain/Domain.csproj"
+    },
+    "Geometry/1.0.0": {
+      "type": "project",
+      "path": "../Geometry/Geometry.csproj",
+      "msbuildProject": "../Geometry/Geometry.csproj"
     },
     "Presentation/1.0.0": {
       "type": "project",

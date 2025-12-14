@@ -1,4 +1,5 @@
 namespace Domain;
+using Geometry;
 
 public class Bullet: GameObject, IDamageable
 {
@@ -6,7 +7,7 @@ public class Bullet: GameObject, IDamageable
         Speed speed, IGameObjectRepository repository ,Direction dir)
         : base(input, position, size, health, speed, repository)
     {
-        Damage = 10;
+        Damage = GameConfig.Bullet.Damage;
     }
     
     public override void Update()
@@ -19,7 +20,7 @@ public class Bullet: GameObject, IDamageable
                 MoveDown();
         }
         
-        if (RectPosition.Y < 20 || HP.Value <= 0 || RectPosition.Y > 900)
+        if (RectPosition.Y < 20 || RectPosition.Y > GameConfig.ScreenHeight - 30 || HP.Value <= 0)
             Die();
     }
 
@@ -27,6 +28,6 @@ public class Bullet: GameObject, IDamageable
     public void TakeDamage(GameObject obj)
     {
         obj.GetDamage(Damage);
-        GetDamage(100);
+        GetDamage(Damage);
     }
 }

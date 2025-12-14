@@ -1,4 +1,5 @@
 namespace Domain;
+using Geometry;
 
 public class Ship : GameObject, IGiveScore
 {
@@ -6,22 +7,41 @@ public class Ship : GameObject, IGiveScore
         Speed speed, IGameObjectRepository repository, Direction dir) 
         : base(input, position, size, health, speed, repository)
     {
-        Score = 10;
+        Score = GameConfig.EnemyShip.Score;
         direction = dir;
+        this.repository = repository;
     }
-    
+
+    private IGameObjectRepository repository;
     private Direction direction;
 
-    private void Shoot()
+    protected void Shoot()
     {
         GameObject obj = null;
         if (direction == Direction.Up)
-            obj = new Bullet(new BulletInput(direction), new Position(RectPosition.X + 29, RectPosition.Y - 26),
-                new Size(25, 25), new Health(20), new Speed(9), repository, direction);
+            obj = new Bullet(
+                new BulletInput(direction), 
+                new Position(
+                    RectPosition.X + GameConfig.Player.BulletOffsetX, 
+                    RectPosition.Y + GameConfig.Player.BulletOffsetUpY),
+                GameConfig.Bullet.Size,
+                new Health(GameConfig.Bullet.Health),
+                new Speed(GameConfig.Bullet.Speed),
+                repository, 
+                direction);
         else
-            obj = new Bullet(new BulletInput(direction), new Position(RectPosition.X + 29, RectPosition.Y + 90),
-                new Size(25, 25), new Health(20), new Speed(9), repository, direction);
-        repository.Add(obj);
+            obj = new Bullet(
+                new BulletInput(direction), 
+                new Position(
+                    RectPosition.X + GameConfig.Player.BulletOffsetX, 
+                    RectPosition.Y + GameConfig.Player.BulletOffsetDownY),
+                GameConfig.Bullet.Size,
+                new Health(GameConfig.Bullet.Health),
+                new Speed(GameConfig.Bullet.Speed),
+                repository, 
+                direction);
+    
+        obj.RegisterInRepository();
     }
     
     public override void Update()
@@ -49,7 +69,7 @@ public class Ship : GameObject, IGiveScore
             }
         }
 
-        if (HP.Value <= 0 || RectPosition.Y > 800)
+        if (RectPosition.Y > 800 || HP.Value <= 0)
             Die();
     }
     

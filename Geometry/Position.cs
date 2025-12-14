@@ -1,4 +1,4 @@
-namespace Domain;
+namespace Geometry;
 
 public class Position(int x, int y): IEquatable<Position>
 {

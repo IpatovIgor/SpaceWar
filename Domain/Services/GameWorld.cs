@@ -1,4 +1,5 @@
 namespace Domain;
+using Geometry;
 
 public class GameWorld
 {
@@ -17,7 +18,7 @@ public class GameWorld
         gameObjects.Remove(obj);
     }
 
-    public bool CheckCollisionWithObject(GameObject newObj)
+    public virtual bool CheckCollisionWithObject(IRectangle newObj)
     {
         var flag = false;
         

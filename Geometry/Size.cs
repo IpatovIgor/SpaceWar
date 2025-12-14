@@ -1,4 +1,4 @@
-namespace Domain;
+namespace Geometry;
 
 public class Size(int w, int h): IEquatable<Size>
 {

@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceApplication", "SpaceAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{858B1E8F-A813-432A-A206-9072259CC844}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometry", "Geometry\Geometry.csproj", "{48A49644-D729-4083-990C-3A028677C29C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{A3434DA6-2C99-4D53-92D3-A56AED67B1CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{858B1E8F-A813-432A-A206-9072259CC844}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{858B1E8F-A813-432A-A206-9072259CC844}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{858B1E8F-A813-432A-A206-9072259CC844}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48A49644-D729-4083-990C-3A028677C29C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48A49644-D729-4083-990C-3A028677C29C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48A49644-D729-4083-990C-3A028677C29C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48A49644-D729-4083-990C-3A028677C29C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3434DA6-2C99-4D53-92D3-A56AED67B1CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3434DA6-2C99-4D53-92D3-A56AED67B1CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3434DA6-2C99-4D53-92D3-A56AED67B1CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3434DA6-2C99-4D53-92D3-A56AED67B1CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

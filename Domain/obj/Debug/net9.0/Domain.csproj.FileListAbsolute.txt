@@ -10,3 +10,7 @@ C:\Users\Игорь\RiderProjects\SpaceWar\Domain\obj\Debug\net9.0\refint\Domain
 C:\Users\Игорь\RiderProjects\SpaceWar\Domain\obj\Debug\net9.0\Domain.pdb
 C:\Users\Игорь\RiderProjects\SpaceWar\Domain\obj\Debug\net9.0\ref\Domain.dll
 C:\Users\Игорь\RiderProjects\SpaceWar\Domain\obj\Debug\net9.0\Domain.sourcelink.json
+C:\Users\Игорь\RiderProjects\SpaceWar\Domain\bin\Debug\net9.0\Geometry.dll
+C:\Users\Игорь\RiderProjects\SpaceWar\Domain\bin\Debug\net9.0\Geometry.pdb
+C:\Users\Игорь\RiderProjects\SpaceWar\Domain\obj\Debug\net9.0\Domain.csproj.AssemblyReference.cache
+C:\Users\Игорь\RiderProjects\SpaceWar\Domain\obj\Debug\net9.0\Domain.csproj.Up2Date

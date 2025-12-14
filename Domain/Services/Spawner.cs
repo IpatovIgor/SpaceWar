@@ -1,4 +1,5 @@
 namespace Domain;
+using Geometry;
 
 public class Spawner: ISpawner
 {
@@ -7,6 +8,7 @@ public class Spawner: ISpawner
 
     private void UpSpeedOfSpawn()
     {
+        // Это мы короче увеличиваем количество объектов, который появятся за раз
         piggyBankForSpawn += 1;
         piggyBankForSpawn %= 5;
         range += piggyBankForSpawn / 4;
@@ -16,21 +18,31 @@ public class Spawner: ISpawner
     {
         for (var i = 0; i < range; i++)
         {
-            var x = random.Next(0, 1120);
+            var x = random.Next(GameConfig.Spawn.MinX, GameConfig.Spawn.MaxX);
             GameObject newObj = null;
             var nextObjInd = (TypeOfObjects) random.Next(0, 2);
-            
+        
             if (nextObjInd == TypeOfObjects.Asteroid)
-                newObj = new Asteroid(new EnemyObjectInput(), new Position(x, 70),
-                    new Size(85, 85), new Health(20), new Speed(3), repository);
+                newObj = new Asteroid(
+                    new EnemyObjectInput(), 
+                    new Position(x, GameConfig.Spawn.StartY + 90),
+                    GameConfig.Asteroid.Size,
+                    new Health(GameConfig.Asteroid.Health),
+                    new Speed(GameConfig.Asteroid.Speed),
+                    repository);
+        
             if (nextObjInd == TypeOfObjects.Ship)
-                newObj = new Ship(new EnemyShipInput(), new Position(x, 70),
-                    new Size(85, 80), new Health(20), new Speed(3), repository, Direction.Down);
+                newObj = new Ship(
+                    new EnemyShipInput(), 
+                    new Position(x, GameConfig.Spawn.StartY),
+                    GameConfig.EnemyShip.Size,
+                    new Health(GameConfig.EnemyShip.Health),
+                    new Speed(GameConfig.EnemyShip.Speed),
+                    repository, 
+                    Direction.Down);
 
-            var flag = gameWorld.CheckCollisionWithObject(newObj);
-            
-            if (!flag)
-                repository.Add(newObj);
+            if (!gameWorld.CheckCollisionWithObject(newObj))
+                newObj.RegisterInRepository();
         }
 
         UpSpeedOfSpawn();

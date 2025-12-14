@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "Geometry/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/Geometry.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Geometry.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Geometry/1.0.0": {
+      "type": "project",
+      "path": "../Geometry/Geometry.csproj",
+      "msbuildProject": "../Geometry/Geometry.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "Geometry >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Игорь\\.nuget\\packages\\": {}
@@ -33,7 +52,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Игорь\\RiderProjects\\SpaceWar\\Geometry\\Geometry.csproj": {
+              "projectPath": "C:\\Users\\Игорь\\RiderProjects\\SpaceWar\\Geometry\\Geometry.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

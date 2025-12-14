@@ -1,4 +1,5 @@
 namespace Domain;
+using Geometry;
 
 public class Asteroid: GameObject, IGiveScore, IDamageable
 {
@@ -6,8 +7,8 @@ public class Asteroid: GameObject, IGiveScore, IDamageable
         Speed speed, IGameObjectRepository repository) 
         : base(input, position, size, health, speed, repository)
     {
-        Score = 5;
-        Damage = 10;
+        Score = GameConfig.Asteroid.Score;
+        Damage = GameConfig.Asteroid.Damage;
     }
     
     public override void Update()
@@ -19,7 +20,7 @@ public class Asteroid: GameObject, IGiveScore, IDamageable
         }
         
         bool wasDie = HP.Value <= 0;
-        if (RectPosition.Y > 900 || HP.Value <= 0)
+        if (RectPosition.Y > GameConfig.ScreenHeight - 100 || HP.Value <= 0)
             Die();
     }
 
@@ -28,6 +29,6 @@ public class Asteroid: GameObject, IGiveScore, IDamageable
     public void TakeDamage(GameObject obj)
     {
         obj.GetDamage(Damage);
-        GetDamage(100);
+        GetDamage(Damage);
     }
 }
