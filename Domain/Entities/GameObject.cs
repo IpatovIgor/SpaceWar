@@ -5,6 +5,9 @@ public abstract class GameObject: IRectangle
 {
     public void GetDamage(int damage)
     {
+        if (damage < 0)
+            throw new ArgumentException("Damage cannot be negative", nameof(damage));
+        
         HP = new Health(HP.Value - damage);
     }
     
@@ -41,6 +44,23 @@ public abstract class GameObject: IRectangle
     protected GameObject(IGameInput input, Position position, Size size, Health health,
         Speed speed, IGameObjectRepository repository)
     {
+        if (input == null) throw new ArgumentNullException(nameof(input));
+        if (position == null) throw new ArgumentNullException(nameof(position));
+        if (size == null) throw new ArgumentNullException(nameof(size));
+        if (health == null) throw new ArgumentNullException(nameof(health));
+        if (speed == null) throw new ArgumentNullException(nameof(speed));
+        if (repository == null) throw new ArgumentNullException(nameof(repository));
+        
+        if (health.Value < 0)
+            throw new HealthBelowZeroException(health.Value);
+    
+        if (speed.Value < 0)
+            throw new ArgumentException("Speed cannot be negative", nameof(speed));
+    
+        if (!GameConfig.IsInBounds(position, size, this is Base))
+            throw new InvalidPositionException(position);
+        
+        
         this.speed = speed;
         this.input = input;
         RectPosition = position;
@@ -53,6 +73,12 @@ public abstract class GameObject: IRectangle
 
     public void RegisterInRepository()
     {
+        if (repository == null)
+            throw new InvalidGameStateException("Repository is not set");
+    
+        if (IsDead)
+            throw new InvalidGameStateException("Cannot register dead object");
+        
         repository.Add(this);
     }
     

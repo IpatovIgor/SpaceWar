@@ -16,6 +16,12 @@ public class Spawner: ISpawner
     
     private void Spawn()
     {
+        if (gameWorld == null)
+            throw new InvalidGameStateException("GameWorld is not set");
+
+        if (repository == null)
+            throw new InvalidGameStateException("Repository is not set");
+        
         for (var i = 0; i < range; i++)
         {
             var x = random.Next(GameConfig.Spawn.MinX, GameConfig.Spawn.MaxX);
@@ -52,6 +58,9 @@ public class Spawner: ISpawner
     
     public Spawner(GameWorld world, IGameObjectRepository repository)
     {
+        if (world == null) throw new ArgumentNullException(nameof(world));
+        if (repository == null) throw new ArgumentNullException(nameof(repository));
+        
         this.repository = repository;
         timer = new Timer(2);
         random = new Random();

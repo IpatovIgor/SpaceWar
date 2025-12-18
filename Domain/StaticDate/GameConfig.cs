@@ -49,11 +49,19 @@ public static class GameConfig
         public const int StartY = 10;
     }
 
-    public static bool IsInBounds(Position pos, Size size)
+    public static bool IsInBounds(Position pos, Size size, bool allowPartialOutOfBounds = false)
     {
+        if (allowPartialOutOfBounds)
+        {
+            return pos.X < ScreenWidth && 
+                   pos.Y < ScreenHeight &&
+                   pos.X + size.Width > 0 &&
+                   pos.Y + size.Height > 0;
+        }
+        
         return pos.X >= 0 && 
-               pos.X + size.Width <= ScreenWidth &&
                pos.Y >= 0 && 
+               pos.X + size.Width <= ScreenWidth &&
                pos.Y + size.Height <= ScreenHeight;
     }
     

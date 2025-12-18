@@ -44,8 +44,8 @@ public class GameController: IGameController
             new Speed(GameConfig.Player.Speed), 
             repository, 
             Direction.Up);
-
-        var backTexture = Raylib.LoadTexture("space.png");
+        
+        var back = new Background("space.png", 0, 0);
 
         var @base = new Base(
             new StopInput(), 
@@ -67,25 +67,26 @@ public class GameController: IGameController
                 world.statController.BaseHP.Value, world.statController.GameIsOver);
             var deltaTime = Raylib.GetFrameTime();
             
-            Draw(backTexture, statView, deltaTime);
+            spawner.TrySpawn(deltaTime);
+            world.UpdateAllObjects();
+            viewManager.UpdateViewers();
+            
+            Draw(back, statView, deltaTime);
             
             if (world.statController.GameIsOver)
                 break;
         }
         
-        Raylib.UnloadTexture(backTexture);
+        back.Dispose();
         return world.statController.AllScore.Value;
     }
 
-    private void Draw(Texture2D backTexture, IStatView statView, float deltaTime)
+    private void Draw(Background backTexture, IStatView statView, float deltaTime)
     {
         Raylib.BeginDrawing();
         Raylib.ClearBackground(Color.Black);
-        Raylib.DrawTexture(backTexture, 0, 0, Color.White);
+        backTexture.Draw();
         statView.Draw();
-        spawner.TrySpawn(deltaTime);
-        world.UpdateAllObjects();
-        viewManager.UpdateViewers();
         renderer.Render(viewManager.ViewsObjects);
         Raylib.EndDrawing();
     }

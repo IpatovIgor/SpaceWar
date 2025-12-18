@@ -10,16 +10,31 @@ public class GameWorld
 
     public void Add(GameObject obj)
     {
+        if (obj == null)
+            throw new ArgumentNullException(nameof(obj));
+    
+        if (gameObjects.Contains(obj))
+            throw new InvalidGameStateException("Object already exists in world");
+        
         gameObjects.Add(obj);
     }
 
     public void Remove(GameObject obj)
     {
+        if (obj == null)
+            throw new ArgumentNullException(nameof(obj));
+    
+        if (!gameObjects.Contains(obj))
+            throw new InvalidGameStateException("Object not found in world");
+        
         gameObjects.Remove(obj);
     }
 
     public virtual bool CheckCollisionWithObject(IRectangle newObj)
     {
+        if (newObj == null)
+            throw new ArgumentNullException(nameof(newObj));
+        
         var flag = false;
         
         foreach (var obj in gameObjects)

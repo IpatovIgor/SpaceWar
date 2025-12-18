@@ -1,5 +1,5 @@
 using Raylib_cs;
-namespace SpaceApplication;
+namespace Presentation;
 
 public class Background : IDisposable
 {

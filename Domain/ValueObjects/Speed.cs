@@ -2,7 +2,8 @@ namespace Domain;
 
 public class Speed(int speed): IEquatable<Speed>
 {
-    public readonly int Value = speed;
+    public readonly int Value = speed >= 0 ? speed 
+        : throw new ArgumentException("Speed cannot be negative");
 
     public bool Equals(Speed? other)
     {

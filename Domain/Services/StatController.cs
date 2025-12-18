@@ -17,7 +17,8 @@ public class StatController : IStatController
     
     public void AddScore(int score)
     {
-        if (score < 0) throw new Exception("Score cannot be negative");
+        if (score < 0) 
+            throw new ArgumentException("Score cannot be negative", nameof(score));
         AllScore = new Score(score + AllScore.Value);
     }
 

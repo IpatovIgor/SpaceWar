@@ -17,6 +17,12 @@ public class Ship : GameObject, IGiveScore
 
     protected void Shoot()
     {
+        if (IsDead)
+            throw new InvalidGameStateException("Dead ship cannot shoot");
+    
+        if (HP.Value <= 0)
+            throw new InvalidGameStateException("Ship has no health");
+        
         GameObject obj = null;
         if (direction == Direction.Up)
             obj = new Bullet(
